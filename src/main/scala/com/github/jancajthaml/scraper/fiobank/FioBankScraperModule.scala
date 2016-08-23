@@ -1,4 +1,4 @@
-package com.github.jancajthaml.scraper.fio
+package com.github.jancajthaml.scraper.fiobank
 
 import akka.event.LoggingAdapter
 import eu.akkamo
@@ -6,7 +6,7 @@ import eu.akkamo.{Context, Dependency, LoggingAdapterFactory, Res}
 
 import scala.util.Try
 
-class FioScraperModule extends akkamo.Module with akkamo.Initializable {
+class FioBankScraperModule extends akkamo.Module with akkamo.Initializable {
 
   override def dependencies(dependencies: Dependency): Dependency = dependencies
     .&&[akkamo.LogModule]
@@ -15,7 +15,7 @@ class FioScraperModule extends akkamo.Module with akkamo.Initializable {
     // inject dependencies
     val log: LoggingAdapter = ctx.get[LoggingAdapterFactory] apply getClass
 
-    log.info("Initializing FIO Scraper module")
+    log.info("Initializing FIO Bank Scraper module")
 
     ctx
   }
