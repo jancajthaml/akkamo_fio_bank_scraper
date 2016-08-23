@@ -1,8 +1,8 @@
 version := "1.0"
 
-scalaVersion := "2.11.8"
-
 description := "FIO Bank scraper"
+
+scalaVersion in Global := "2.11.8"
 
 lazy val root = (project in file(".")).settings(
   name := "fio-scraper",
