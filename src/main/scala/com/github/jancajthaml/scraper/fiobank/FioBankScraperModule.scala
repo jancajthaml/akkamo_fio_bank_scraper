@@ -33,7 +33,11 @@ class FioBankScraperModule extends akkamo.Module with akkamo.Initializable with 
 
     implicit val eCtx: ExecutionContextExecutor = system.dispatcher
 
-    val scraperActor: ActorRef = system.actorOf(ScraperActor.props)
+    // TODO load token from MongoDB instead on system environment
+    val token: String = Option(System.getProperty("fio.token")).getOrElse(
+      throw new IllegalArgumentException("Missing FIO token in system env 'fio.token'")
+    )
+    val scraperActor: ActorRef = system.actorOf(ScraperActor.props(token))
     system.scheduler.schedule(5.seconds, 30.seconds, scraperActor, ScraperActor.Fetch)
 
     ctx
